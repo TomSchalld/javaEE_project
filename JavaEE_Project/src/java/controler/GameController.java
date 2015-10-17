@@ -7,6 +7,7 @@ package controler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import model.Questions;
 
 /**
  *
@@ -14,12 +15,14 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class SessionControler {
+public class GameController {
+    Questions questionOne;
+    Questions questionTwo;
 
     /**
      * Creates a new instance of bean
      */
-    public SessionControler() {
+    public GameController() {
         
     }
     public void addQuestion(){
