@@ -9,27 +9,30 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </h:head>
     <h:body>
-        <header>
-            <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
-            <h1>CountryBall Quiz</h1>
-            <h:form>
-                <h:outputText id="question1" class="question" value="Which is the cat in the three blue green ?"/>
-                <h:selectOneRadio value="" class="radio-list">
-                    <f:selectItem itemValue="" itemLabel="Africa" />
-                    <f:selectItem itemValue="" itemLabel="SPACE !!!" />
-                    <f:selectItem itemValue="" itemLabel="42" />
-                </h:selectOneRadio>
-                
-                <h:outputText id="question2" class="question" value="Obama is an asshole ? "/>
-                <h:selectOneRadio value="" class="radio-list">
-                    <f:selectItem itemValue="" itemLabel="YES" />
-                    <f:selectItem itemValue="" itemLabel="SPACE !!!" />
-                    <f:selectItem itemValue="" itemLabel="NO" />
-                </h:selectOneRadio>
-            
-            <h:commandButton value="Send" action="index.xhtml" class="send-form"/>
+        <f:view>
+            <header>
+                <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
+                <h1>CountryBall Quiz</h1>
+            </header>
+            <h:form class="form-field">
+                <h:outputLabel value="New Question: "/>
+                <h:inputText p:type="text" value="#{dataController.question}" />
+                <br/>
+                <h:outputLabel value="Answer 1: "/>
+                <h:inputText p:type="text" value="#{dataController.answers[0]}" />
+                <br/>
+                <h:outputLabel  value="Answer 2: "/>
+                <h:inputText p:type="text" value="#{dataController.answers[1]}" />
+                <br/>
+                <h:outputLabel value="Answer 3: "/>
+                <h:inputText p:type="text" value="#{dataController.answers[2]}" />
+                <br/>
+                <h:outputLabel value="Answer 4: "/>
+                <h:inputText p:type="text" value="#{dataController.answers[3]}" />
+                <br/>
+                <h:commandButton value="Submit" action="index.xhtml" class="send-form"/>
             </h:form>
-        </header>
+        </f:view>
     </h:body>
 </html>
 

@@ -12,24 +12,12 @@
         <header>
             <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
             <h1>CountryBall Quiz</h1>
-            <h:form>
-                <h:outputText id="question1" class="question" value="Which is the cat in the three blue green ?"/>
-                <h:selectOneRadio value="" class="radio-list">
-                    <f:selectItem itemValue="" itemLabel="Africa" />
-                    <f:selectItem itemValue="" itemLabel="SPACE !!!" />
-                    <f:selectItem itemValue="" itemLabel="42" />
-                </h:selectOneRadio>
-                
-                <h:outputText id="question2" class="question" value="Obama is an asshole ? "/>
-                <h:selectOneRadio value="" class="radio-list">
-                    <f:selectItem itemValue="" itemLabel="YES" />
-                    <f:selectItem itemValue="" itemLabel="SPACE !!!" />
-                    <f:selectItem itemValue="" itemLabel="NO" />
-                </h:selectOneRadio>
-            
-            <h:commandButton value="Send" action="index.xhtml" class="send-form"/>
-            </h:form>
         </header>
+
+        <h:form class="form-field">
+            <h:commandButton value="Start Game" action="game.xhtml" class="send-form"/>
+            <h:commandButton value="Submit Question" action="newQuestion.xhtml" class="send-form"/>
+        </h:form>
     </h:body>
 </html>
 
