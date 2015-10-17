@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean;
+package controler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,12 +14,18 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class bean {
+public class SessionControler {
 
     /**
      * Creates a new instance of bean
      */
-    public bean() {
+    public SessionControler() {
+        
     }
-    
+    public void addQuestion(){
+        
+    }
+    public void addAnswer(){
+        
+    }
 }
