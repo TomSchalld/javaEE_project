@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Highscore.findByPoints", query = "SELECT h FROM Highscore h WHERE h.points = :points"),
     @NamedQuery(name = "Highscore.findByTimestamp", query = "SELECT h FROM Highscore h WHERE h.timestamp = :timestamp")})
 public class Highscore implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
