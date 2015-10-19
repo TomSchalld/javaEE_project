@@ -32,15 +32,16 @@ public class GameController {
      */
     public GameController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
+        randomQuestions();
+
     }
-    public Questions randomQuestions(){
+    private Questions randomQuestions(){
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
         return question;
     }
     public Questions getQuestion() {
-        randomQuestions();
         return question;
     }
 
