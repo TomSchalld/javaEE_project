@@ -5,6 +5,7 @@
  */
 package controler;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -98,6 +99,7 @@ public class DataController {
         a.setQuestionID(q);
 
         answerList.add(a);
+        Collections.shuffle(answerList);
         q.setAnswersList(answerList);
         t = em.getTransaction();
         t.begin();
