@@ -27,13 +27,13 @@ import model.Questions;
 public class GameController {
     @NotNull
     private String name;
-    private int roundCount;
+    private int roundCount = 0;
     private List<Questions> resultList;
     private Questions question;
     private Answers answerInGame;
     private EntityManager em;
     private EntityTransaction t;
-    private int score;
+    private int score = 0;
 
     /**
      * Creates a new instance of bean
@@ -41,8 +41,6 @@ public class GameController {
     public GameController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
         randomQuestions();
-        this.roundCount = 0;
-        this.score = 0;
     }
 
     private void randomQuestions() {
