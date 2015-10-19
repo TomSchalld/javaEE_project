@@ -28,6 +28,7 @@ public class GameController {
     private List<Questions> resultList;
     private Questions question;
     private Answers answerInGame;
+    private int answerIndex;
     private EntityManager em;
     private EntityTransaction t;
     private int score = 0;
@@ -69,8 +70,17 @@ public class GameController {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getAnswerIndex() {
+        return answerIndex;
+    }
+
+    public void setAnswerIndex(int answerIndex) {
+        this.answerIndex = answerIndex;
+    }
     
     public String nextRound() {
+        this.answerInGame = this.question.getAnswersList().get(this.answerIndex);
         if (this.roundCount < 10) {
             this.score += answerInGame.getPoints();
             this.roundCount++;
