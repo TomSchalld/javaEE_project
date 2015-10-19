@@ -72,35 +72,12 @@ public class DataController {
         question = null;
         answers = new String[4];
     }
+    
     public void addQuestion() {
         List<Answers> answerList = new LinkedList<>();
         Questions q = new Questions();
         q.setQuestion(question);
-        Answers a = new Answers();
-        a.setAnswer(answers[0]);
-        a.setPoints(0);
-        a.setQuestionID(q);
-        answerList.add(a);
-        a = new Answers();
-        a.setAnswer(answers[1]);
-        a.setPoints(3);
-        a.setQuestionID(q);
-
-        answerList.add(a);
-        a = new Answers();
-        a.setAnswer(answers[2]);
-        a.setPoints(7);
-        a.setQuestionID(q);
-
-        answerList.add(a);
-        a = new Answers();
-        a.setAnswer(answers[3]);
-        a.setPoints(15);
-        a.setQuestionID(q);
-
-        answerList.add(a);
-        Collections.shuffle(answerList);
-        q.setAnswersList(answerList);
+        doAnswers(q, answerList);
         t = em.getTransaction();
         t.begin();
         em.persist(q);
@@ -110,6 +87,31 @@ public class DataController {
             t.rollback();
         }
         clear();
+    }
+
+    private void doAnswers(Questions q, List<Answers> answerList) {
+        Answers a = new Answers();
+        a.setAnswer(answers[0]);
+        a.setPoints(0);
+        a.setQuestionID(q);
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[1]);
+        a.setPoints(3);
+        a.setQuestionID(q);
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[2]);
+        a.setPoints(7);
+        a.setQuestionID(q);
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[3]);
+        a.setPoints(15);
+        a.setQuestionID(q);
+        answerList.add(a);
+        Collections.shuffle(answerList);
+        q.setAnswersList(answerList);
     }
 
 }

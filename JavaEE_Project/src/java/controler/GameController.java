@@ -22,18 +22,21 @@ import model.Questions;
 @ManagedBean
 @SessionScoped
 public class GameController {
-    List<Questions> resultList;
-    Questions question;
-    Answers answerInGame;
+    private int roundCount;
+    private List<Questions> resultList;
+    private Questions question;
+    private Answers answerInGame;
     private EntityManager em;
     private EntityTransaction t;
+    private int score;
     /**
      * Creates a new instance of bean
      */
     public GameController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
         randomQuestions();
-
+        this.roundCount =0;
+        this.score=0;
     }
     private void randomQuestions(){
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
@@ -55,5 +58,19 @@ public class GameController {
     public void setAnswerInGame(Answers answerInGame) {
         this.answerInGame = answerInGame;
     }
+    public String nextRound(){
+        if(this.roundCount<10){
+            this.score+=answerInGame.getPoints();
+                    return "next";
+
+        }
+        this.persistScore(this.score);
+        return "highscore";
+    }
+
+    private void persistScore(int score) {
+        
+    }
+    
     
 }
