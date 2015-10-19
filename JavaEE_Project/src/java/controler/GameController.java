@@ -26,7 +26,7 @@ import model.Questions;
 @SessionScoped
 public class GameController {
     @NotNull
-    private String name;
+    private String name = "";
     private int roundCount = 0;
     private List<Questions> resultList;
     private Questions question;
