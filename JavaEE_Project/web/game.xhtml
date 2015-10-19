@@ -22,7 +22,7 @@
                 <f:selectItem itemValue="#{gameController.question.answersList.get(2)}" itemLabel="#{gameController.question.answersList.get(2).answer}" />
                 <f:selectItem itemValue="#{gameController.question.answersList.get(3)}" itemLabel="#{gameController.question.answersList.get(3).answer}" />
             </h:selectOneRadio>
-            <h:commandButton value="Send" action="index.xhtml" class="send-form"/>
+            <h:commandButton value="Send" action="#{gameController.nextRound}" class="send-form"/>
         </h:form>
     </h:body>
 </html>
