@@ -13,15 +13,15 @@
             <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
             <h1>CountryBall Quiz</h1>
         </header>
-        
+
         <h:form class="form-field">
             <h:outputText id="question1" class="question" value="#{gameController.question.question}"/>
             <h:selectOneRadio value="#{gameController.answerInGame}" class="radio-list">
-                <f:selectItem itemValue="#{gameController.question.answersList.get(0)}" itemLabel="#{gameController.question.answersList.get(0).answer}" />
-                <f:selectItem itemValue="#{gameController.question.answersList.get(1)}" itemLabel="#{gameController.question.answersList.get(1).answer}" />
-                <f:selectItem itemValue="#{gameController.question.answersList.get(2)}" itemLabel="#{gameController.question.answersList.get(2).answer}" />
-                <f:selectItem itemValue="#{gameController.question.answersList.get(3)}" itemLabel="#{gameController.question.answersList.get(3).answer}" />
+
+                <f:selectItems value="#{gameController.question.answersList}" var="answer"
+                               itemLabel="#{answer}" itemValue="#{answer.answer}" />
             </h:selectOneRadio>
+            <!-- </h:selectOneRadio>-->
             <h:commandButton value="Send" action="#{gameController.nextRound}" class="send-form"/>
         </h:form>
     </h:body>
