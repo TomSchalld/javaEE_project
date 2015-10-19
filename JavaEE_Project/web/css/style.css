@@ -82,10 +82,31 @@ header h1{
 
 
 .form-field {
-    font-size: 1.6em;
+    font-size: 1.3em;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom:10px;
     margin-top:10px;
+}
+
+.form-field table{
+    margin-top:20px;
+    margin-left:auto; 
+    margin-right:auto;
+    width:50%;
+    margin-left:28%;
+}
+
+
+tbody:before {
+    content: "-";
+    display: block;
+    line-height: 0.7em;
+    color: transparent;
+}
+
+input{
+    margin-left: 5px;
+    margin-right:5px;
 }
