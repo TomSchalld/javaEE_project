@@ -67,7 +67,10 @@ public class DataController {
     public void setAnswers(String[] answers) {
         this.answers = answers;
     }
-
+    public void clear(){
+        question = null;
+        answers = new String[4];
+    }
     public void addQuestion() {
         List<Answers> answerList = new LinkedList<>();
         Questions q = new Questions();
@@ -104,8 +107,7 @@ public class DataController {
         } catch (Exception e) {
             t.rollback();
         }
-        
-        //clear();
+        clear();
     }
 
 }
