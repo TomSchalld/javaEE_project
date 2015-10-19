@@ -15,8 +15,11 @@
         </header>
         
         <h:form class="form-field">
-            
-            <h:commandButton value="Send" action="index.xhtml" class="send-form"/>
+            <div class="first-q">
+                <h:outputLabel value="Name of the player: "/>
+                <h:inputText p:type="text" value="#{GameController.name}" />
+            </div>
+            <h:commandButton value="Send" action="game.xhtml" class="send-form"/>
         </h:form>
     </h:body>
 </html>
