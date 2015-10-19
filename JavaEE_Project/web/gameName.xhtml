@@ -19,7 +19,7 @@
                 <h:outputLabel value="Name of the player: "/>
                 <h:inputText p:type="text" value="#{gameController.name}" />
             </div>
-            <h:commandButton value="Send" action="#{gameController.randomQuestions}" class="send-form"/>
+            <h:commandButton value="Send" action="#{gameController.randomQuestions()}" class="send-form"/>
         </h:form>
     </h:body>
 </html>

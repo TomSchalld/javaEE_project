@@ -23,7 +23,7 @@ import model.Questions;
 @ManagedBean
 @SessionScoped
 public class GameController {
-    private String name = "";
+    private String name = "John Appleseed";
     private int roundCount = 0;
     private List<Questions> resultList;
     private Questions question;
