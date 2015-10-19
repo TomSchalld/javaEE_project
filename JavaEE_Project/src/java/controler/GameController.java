@@ -23,8 +23,7 @@ import model.Questions;
 @SessionScoped
 public class GameController {
     List<Questions> resultList;
-    Questions questionOne;
-    Questions questionTwo;
+    Questions question;
     private EntityManager em;
     private EntityTransaction t;
     /**
@@ -36,24 +35,16 @@ public class GameController {
     public Questions randomQuestions(){
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
-        questionOne = resultList.get(0);
-        return questionOne;
+        question = resultList.get(0);
+        return question;
     }
-    public Questions getQuestionOne() {
+    public Questions getQuestion() {
         randomQuestions();
-        return questionOne;
+        return question;
     }
 
-    public void setQuestionOne(Questions questionOne) {
-        this.questionOne = questionOne;
+    public void setQuestion(Questions question) {
+        this.question = question;
     }
 
-    public Questions getQuestionTwo() {
-        return questionTwo;
-    }
-
-    public void setQuestionTwo(Questions questionTwo) {
-        this.questionTwo = questionTwo;
-    }
-    
 }
