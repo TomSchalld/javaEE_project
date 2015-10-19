@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.validation.constraints.NotNull;
 import model.Answers;
 import model.Questions;
 
@@ -22,6 +23,8 @@ import model.Questions;
 @ManagedBean
 @SessionScoped
 public class GameController {
+    @NotNull
+    private String name;
     private int roundCount;
     private List<Questions> resultList;
     private Questions question;
@@ -29,20 +32,23 @@ public class GameController {
     private EntityManager em;
     private EntityTransaction t;
     private int score;
+
     /**
      * Creates a new instance of bean
      */
     public GameController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
         randomQuestions();
-        this.roundCount =0;
-        this.score=0;
+        this.roundCount = 0;
+        this.score = 0;
     }
-    private void randomQuestions(){
+
+    private void randomQuestions() {
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
     }
+
     public Questions getQuestion() {
         return question;
     }
@@ -58,19 +64,28 @@ public class GameController {
     public void setAnswerInGame(Answers answerInGame) {
         this.answerInGame = answerInGame;
     }
-    public String nextRound(){
-        if(this.roundCount<10){
-            this.score+=answerInGame.getPoints();
-                    return "next";
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String nextRound() {
+        if (this.roundCount < 10) {
+            this.score += answerInGame.getPoints();
+            
+            return "next";
 
         }
         this.persistScore(this.score);
         return "highscore";
     }
-
+    
     private void persistScore(int score) {
-        
+
     }
-    
-    
+
 }
