@@ -10,5 +10,5 @@
         <property name="URL" value="jdbc:mysql://tsvpn.dynamic-dns.net:7384/game?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="Game" object-type="user" pool-name="mysql_game_webuserPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/Game" object-type="user" pool-name="mysql_game_webuserPool"/>
 </resources>

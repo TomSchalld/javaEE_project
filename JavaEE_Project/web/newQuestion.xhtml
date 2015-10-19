@@ -18,19 +18,20 @@
                 <h:outputLabel value="New Question: "/>
                 <h:inputText p:type="text" value="#{dataController.question}" />
                 <br/>
-                <h:outputLabel value="Answer 1: "/>
+                <h:outputLabel value="Answer 1, Points: 0 "/>
                 <h:inputText p:type="text" value="#{dataController.answers[0]}" />
                 <br/>
-                <h:outputLabel  value="Answer 2: "/>
+                <h:outputLabel  value="Answer 2, Points: 3 "/>
                 <h:inputText p:type="text" value="#{dataController.answers[1]}" />
                 <br/>
-                <h:outputLabel value="Answer 3: "/>
+                <h:outputLabel value="Answer 3, Points: 7 "/>
                 <h:inputText p:type="text" value="#{dataController.answers[2]}" />
                 <br/>
-                <h:outputLabel value="Answer 4: "/>
+                <h:outputLabel value="Answer 4, Points: 15"/>
                 <h:inputText p:type="text" value="#{dataController.answers[3]}" />
                 <br/>
-                <h:commandButton value="Submit" action="index.xhtml" class="send-form"/>
+                <h:commandButton value="Submit" action="#{dataController.addQuestion}" actionListener="index.html" class="send-form"/>
+                <h:commandButton value="Go Back" action="index.xhtml" class="send-form"/>
             </h:form>
         </f:view>
     </h:body>

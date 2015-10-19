@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Answers.findAll", query = "SELECT a FROM Answers a"),
-    @NamedQuery(name = "Answers.findAllAnswersToQuestion", query = "SELECT a FROM Answers a WHERE a.questionID = :questionID"),
     @NamedQuery(name = "Answers.findById", query = "SELECT a FROM Answers a WHERE a.id = :id"),
     @NamedQuery(name = "Answers.findByPoints", query = "SELECT a FROM Answers a WHERE a.points = :points")})
 public class Answers implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

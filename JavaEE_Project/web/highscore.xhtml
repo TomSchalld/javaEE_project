@@ -13,11 +13,13 @@
             <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
             <h1>CountryBall Quiz</h1>
         </header>
-
         <h:form class="form-field">
-            <h:commandButton value="Start Game" action="game.xhtml" class="send-form"/>
-            <h:commandButton value="Submit Question" action="newQuestion.xhtml" class="send-form"/>
-            <h:commandButton value="Show Highscore" action="highscore.xhtml" class="send-form"/>
+            <h:commandButton value="Go Back" action="index.xhtml" class="send-form"/>
+            <h:dataTable value="#{dataController.scores}" var="item">
+                <h:column><f:facet name="header">Name</f:facet>#{item.name}</h:column>
+                <h:column><f:facet name="header">Points</f:facet>#{item.points}</h:column>
+                <h:column><f:facet name="header">Date</f:facet>#{item.timestamp}</h:column>
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>

@@ -12,7 +12,11 @@ import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import model.Answers;
+import model.Highscore;
 import model.Questions;
 
 /**
@@ -22,18 +26,30 @@ import model.Questions;
 @ManagedBean
 @RequestScoped
 public class DataController {
+
+    @NotNull(message = "Question must be filled")
+    //@Pattern(regexp = "^[A-Z0-9a-záéíóú.,?!]*$s", message = "Question contains non-alphabetic things")
+    @Size(min = 5, max = 255, message = "Question to short or to long ")
     private String question;
+    //@Pattern(regexp = "^[A-Z0-9a-záéíóú.,?!]*$s", message = "Answer contains forbidden things")
+    @Size(min = 5, max = 255, message = "Answer to short or to long ")
+    @NotNull(message = "Answers must be filled")
     private String[] answers;
     private EntityManager em;
     private EntityTransaction t;
-    
-    
+    private List<Highscore> scoreboard;
+
     /**
      * Creates a new instance of DataControler
      */
     public DataController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
         answers = new String[4];
+    }
+
+    public List<Highscore> getScores() {
+        this.scoreboard = em.createNamedQuery("Highscore.orderedByPoints").getResultList();
+        return scoreboard;
     }
 
     public String getQuestion() {
@@ -47,11 +63,49 @@ public class DataController {
     public String[] getAnswers() {
         return answers;
     }
+
     public void setAnswers(String[] answers) {
         this.answers = answers;
     }
-    public void addQuestion(){
+
+    public void addQuestion() {
+        List<Answers> answerList = new LinkedList<>();
+        Questions q = new Questions();
+        q.setQuestion(question);
+        Answers a = new Answers();
+        a.setAnswer(answers[0]);
+        a.setPoints(0);
+        a.setQuestionID(q);
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[1]);
+        a.setPoints(3);
+        a.setQuestionID(q);
+
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[2]);
+        a.setPoints(7);
+        a.setQuestionID(q);
+
+        answerList.add(a);
+        a = new Answers();
+        a.setAnswer(answers[3]);
+        a.setPoints(15);
+        a.setQuestionID(q);
+
+        answerList.add(a);
+        q.setAnswersList(answerList);
+        t = em.getTransaction();
+        t.begin();
+        em.persist(q);
+        try {
+            t.commit();
+        } catch (Exception e) {
+            t.rollback();
+        }
         
+        //clear();
     }
-    
+
 }

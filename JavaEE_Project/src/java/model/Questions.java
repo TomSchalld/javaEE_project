@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Questions.findAll", query = "SELECT q FROM Questions q"),
     @NamedQuery(name = "Questions.findById", query = "SELECT q FROM Questions q WHERE q.id = :id")})
 public class Questions implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +49,7 @@ public class Questions implements Serializable {
     @Column(name = "Question")
     private String question;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionID")
-    private Collection<Answers> answersCollection;
+    private List<Answers> answersList;
 
     public Questions() {
     }
@@ -79,12 +80,12 @@ public class Questions implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Answers> getAnswersCollection() {
-        return answersCollection;
+    public List<Answers> getAnswersList() {
+        return answersList;
     }
 
-    public void setAnswersCollection(Collection<Answers> answersCollection) {
-        this.answersCollection = answersCollection;
+    public void setAnswersList(List<Answers> answersList) {
+        this.answersList = answersList;
     }
 
     @Override

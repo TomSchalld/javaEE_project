@@ -13,13 +13,14 @@
             <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
             <h1>CountryBall Quiz</h1>
         </header>
-
+        
         <h:form class="form-field">
-            <h:outputText id="question1" class="question" value="Which is the cat in the three blue green ?"/>
+            <h:outputText id="question1" class="question" value="#{gameController.questionOne.question}"/>
             <h:selectOneRadio value="" class="radio-list">
-                <f:selectItem itemValue="" itemLabel="Africa" />
-                <f:selectItem itemValue="" itemLabel="SPACE !!!" />
-                <f:selectItem itemValue="" itemLabel="42" />
+                <f:selectItem itemValue="" itemLabel="#{gameController.questionOne.answersList.get(0).answer}" />
+                <f:selectItem itemValue="" itemLabel="#{gameController.questionOne.answersList.get(1).answer}" />
+                <f:selectItem itemValue="" itemLabel="#{gameController.questionOne.answersList.get(2).answer}" />
+                <f:selectItem itemValue="" itemLabel="#{gameController.questionOne.answersList.get(3).answer}" />
             </h:selectOneRadio>
 
             <h:outputText id="question2" class="question" value="Obama is an asshole ? "/>
