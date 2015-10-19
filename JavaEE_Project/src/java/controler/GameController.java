@@ -35,11 +35,10 @@ public class GameController {
         randomQuestions();
 
     }
-    private Questions randomQuestions(){
+    private void randomQuestions(){
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
-        return question;
     }
     public Questions getQuestion() {
         return question;
