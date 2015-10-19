@@ -24,6 +24,7 @@ import model.Questions;
 public class GameController {
     List<Questions> resultList;
     Questions question;
+    Answers answerInGame;
     private EntityManager em;
     private EntityTransaction t;
     /**
@@ -47,4 +48,12 @@ public class GameController {
         this.question = question;
     }
 
+    public Answers getAnswerInGame() {
+        return answerInGame;
+    }
+
+    public void setAnswerInGame(Answers answerInGame) {
+        this.answerInGame = answerInGame;
+    }
+    
 }
