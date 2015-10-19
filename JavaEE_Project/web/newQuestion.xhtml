@@ -14,22 +14,32 @@
                 <img src="image/header.png" alt="Header CountryBall Quiz" class="header-img"/>
                 <h1>CountryBall Quiz</h1>
             </header>
-            <h:form class="form-field">
-                <h:outputLabel value="New Question: "/>
-                <h:inputText p:type="text" value="#{dataController.question}" />
-                <br/>
-                <h:outputLabel value="Answer 1, Points: 0 "/>
-                <h:inputText p:type="text" value="#{dataController.answers[0]}" />
-                <br/>
-                <h:outputLabel  value="Answer 2, Points: 3 "/>
-                <h:inputText p:type="text" value="#{dataController.answers[1]}" />
-                <br/>
-                <h:outputLabel value="Answer 3, Points: 7 "/>
-                <h:inputText p:type="text" value="#{dataController.answers[2]}" />
-                <br/>
-                <h:outputLabel value="Answer 4, Points: 15"/>
-                <h:inputText p:type="text" value="#{dataController.answers[3]}" />
-                <br/>
+            <h:form class="form-field add-question">
+                <div class="first-q">
+                    <h:outputLabel value="New Question: "/>
+
+                    <h:inputText p:type="text" value="#{dataController.question}" />
+                </div>
+                
+                <div class="list-answer">
+                    <div class="answer">
+                        <h:outputLabel value="Answer 1, Points: 0 "/>
+                        <h:inputText p:type="text" value="#{dataController.answers[0]}" />
+                    </div>
+                    <div class="answer">
+                        <h:outputLabel  value="Answer 2, Points: 3 "/>
+                        <h:inputText p:type="text" value="#{dataController.answers[1]}" />
+                    </div>
+                    <div class="answer">
+                        <h:outputLabel value="Answer 3, Points: 7 "/>
+                        <h:inputText p:type="text" value="#{dataController.answers[2]}" />
+                    </div>
+                    <div class="answer">
+                        <h:outputLabel value="Answer 4, Points: 15"/>
+                        <h:inputText p:type="text" value="#{dataController.answers[3]}" />
+                    </div>
+                </div>
+                
                 <h:commandButton value="Submit" action="#{dataController.addQuestion}" actionListener="index.html" class="send-form"/>
             </h:form>
             <h:form class="form-field"><h:commandButton value="Go Back" action="index.xhtml" class="send-form"/></h:form>
