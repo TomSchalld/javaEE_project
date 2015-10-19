@@ -6,14 +6,12 @@
 package controler;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.validation.constraints.NotNull;
 import model.Answers;
 import model.Highscore;
 import model.Questions;
@@ -25,7 +23,6 @@ import model.Questions;
 @ManagedBean
 @SessionScoped
 public class GameController {
-    @NotNull
     private String name = "";
     private int roundCount = 0;
     private List<Questions> resultList;
@@ -40,13 +37,13 @@ public class GameController {
      */
     public GameController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
-        randomQuestions();
     }
 
-    private void randomQuestions() {
+    public String randomQuestions() {
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
+        return "game";
     }
 
     public Questions getQuestion() {
@@ -78,8 +75,7 @@ public class GameController {
             this.score += answerInGame.getPoints();
             this.roundCount++;
             answerInGame=null;
-            randomQuestions();
-            return "";
+            return randomQuestions();
         }
         this.persistScore();
         return "highscore";

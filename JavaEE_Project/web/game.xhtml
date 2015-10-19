@@ -19,7 +19,7 @@
             <h:selectOneRadio value="#{gameController.answerInGame}" class="radio-list">
 
                 <f:selectItems value="#{gameController.question.answersList}" var="answer"
-                               itemLabel="#{answer}" itemValue="#{answer.answer}" />
+                               itemValue="#{answer}" itemLabel="#{answer.answer}" />
             </h:selectOneRadio>
             <!-- </h:selectOneRadio>-->
             <h:commandButton value="Send" action="#{gameController.nextRound}" class="send-form"/>

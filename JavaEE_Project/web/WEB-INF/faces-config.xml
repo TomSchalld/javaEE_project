@@ -9,5 +9,16 @@
             <from-outcome>highscore</from-outcome>
             <to-view-id>/highscore.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>game</from-outcome>
+            <to-view-id>/game.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/gameName.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>game</from-outcome>
+            <to-view-id>/game.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
