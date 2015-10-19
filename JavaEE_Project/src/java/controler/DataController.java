@@ -29,10 +29,10 @@ import model.Questions;
 public class DataController {
 
     @NotNull(message = "Question must be filled")
-    @Pattern(regexp = "^[a-zA-Z0-9_.+-]\\?", message = "Question contains non-alphabetic things")
+    @Pattern(regexp = "^[a-zA-Z0-9_ ]*$", message = "Question contains non-alphabetic things")
     @Size(min = 5, max = 255, message = "Question to short or to long ")
     private String question;
-    @Pattern(regexp = "^[a-zA-Z0-9_.+-]", message = "Answer contains forbidden things")
+    @Pattern(regexp = "^[a-zA-Z0-9_ ]*$", message = "Answer contains forbidden things")
     @Size(min = 5, max = 255, message = "Answer to short or to long ")
     @NotNull(message = "Answers must be filled")
     private String[] answers;
