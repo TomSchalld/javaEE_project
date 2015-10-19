@@ -6,6 +6,7 @@
 package controler;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +15,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.validation.constraints.NotNull;
 import model.Answers;
+import model.Highscore;
 import model.Questions;
 
 /**
@@ -76,16 +78,28 @@ public class GameController {
     public String nextRound() {
         if (this.roundCount < 10) {
             this.score += answerInGame.getPoints();
-            
-            return "next";
-
+            this.roundCount++;
+            answerInGame=null;
+            randomQuestions();
+            return "";
         }
-        this.persistScore(this.score);
+        this.persistScore();
         return "highscore";
     }
     
-    private void persistScore(int score) {
-
+    private void persistScore() {
+        Highscore h = new Highscore();
+        h.setName(name);
+        h.setPoints(score);
+        t = em.getTransaction();
+        t.begin();
+        em.persist(h);
+        try {
+            t.commit();
+        } catch (Exception e) {
+            t.rollback();
+        }
+    
     }
 
 }
