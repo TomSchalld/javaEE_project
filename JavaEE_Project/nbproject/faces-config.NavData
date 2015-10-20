@@ -5,8 +5,8 @@
         <Node id="index.xhtml" x="400" y="300" zoom="true"/>
         <Node id="game.xhtml" x="416" y="151" zoom="true"/>
         <Node id="gameName.xhtml" x="684" y="149" zoom="true"/>
-        <Node id="newQuestion.xhtml" x="150" y="150" zoom="true"/>
         <Node id="highscore.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="newQuestion.xhtml" x="150" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

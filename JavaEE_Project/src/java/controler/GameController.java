@@ -6,6 +6,7 @@
 package controler;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -44,7 +45,8 @@ public class GameController {
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
-        return "game";
+            return "game";
+        
     }
 
     public Questions getQuestion() {
@@ -81,7 +83,7 @@ public class GameController {
     
     public String nextRound() {
         this.answerInGame = this.question.getAnswersList().get(this.answerIndex);
-        if (this.roundCount < 10) {
+        if (this.roundCount < resultList.size() && this.roundCount < 10) {
             this.score += answerInGame.getPoints();
             this.roundCount++;
             answerInGame=null;
@@ -95,10 +97,11 @@ public class GameController {
         Highscore h = new Highscore();
         h.setName(name);
         h.setPoints(score);
+        h.setTimestamp(new Date());
         t = em.getTransaction();
         t.begin();
-        em.persist(h);
         try {
+            em.persist(h);
             t.commit();
         } catch (Exception e) {
             t.rollback();
