@@ -25,6 +25,7 @@ import model.Questions;
 @ManagedBean
 @SessionScoped
 public class GameController {
+
     private String name = "John Appleseed";
     private int roundCount = 0;
     private List<Questions> resultList;
@@ -47,7 +48,7 @@ public class GameController {
         Collections.shuffle(resultList);
         question = resultList.get(0);
         return "game";
-        
+
     }
 
     public Questions getQuestion() {
@@ -81,15 +82,17 @@ public class GameController {
     public void setAnswerIndex(int answerIndex) {
         this.answerIndex = answerIndex;
     }
-    
+
     public String nextRound() {
         this.answerInGame = this.question.getAnswersList().get(this.answerIndex);
-        if (this.roundCount < this.resultList.size() && this.roundCount < 10) {
+        if (this.roundCount < 10) {
             this.score += answerInGame.getPoints();
             this.roundCount++;
-            this.answerInGame=null;
-            this.question = resultList.get(this.roundCount);
-            return "game";
+            this.answerInGame = null;
+            if (this.roundCount < this.resultList.size()) {
+                this.question = resultList.get(this.roundCount);
+                return "game";
+            }
         }
         this.persistScore();
         clear();
@@ -97,14 +100,16 @@ public class GameController {
     }
 
     private void clear() {
-        this.answerInGame=null;
-        this.roundCount=0;
-        this.score=0;
+        this.answerInGame = null;
+        this.roundCount = 0;
+        this.score = 0;
         this.logout();
     }
+
     public void logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
+
     private void persistScore() {
         Highscore h = new Highscore();
         h.setName(name);
@@ -118,7 +123,7 @@ public class GameController {
         } catch (Exception e) {
             t.rollback();
         }
-    
+
     }
 
 }
