@@ -15,6 +15,8 @@
         </header>
         <h:form class="form-field">
             <h:commandButton value="Go Back" action="index.xhtml" class="send-form"/>
+            <h:commandButton value="Sort by Name" action="#{dataController.sortByName}" class="send-form"/>
+            <h:commandButton value="Sort by Date" action="#{dataController.sortByDate}" class="send-form"/>
             <h:dataTable value="#{dataController.scores}" var="item">
                 <h:column><f:facet name="header">Name</f:facet>#{item.name}</h:column>
                 <h:column><f:facet name="header">Points</f:facet>#{item.points}</h:column>

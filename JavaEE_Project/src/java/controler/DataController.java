@@ -45,11 +45,11 @@ public class DataController {
      */
     public DataController() {
         em = Persistence.createEntityManagerFactory("JavaEE_ProjectPU").createEntityManager();
+        this.scoreboard = em.createNamedQuery("Highscore.orderedByPoints").getResultList();
         answers = new String[4];
     }
 
     public List<Highscore> getScores() {
-        this.scoreboard = em.createNamedQuery("Highscore.orderedByPoints").getResultList();
         return scoreboard;
     }
 
@@ -68,11 +68,20 @@ public class DataController {
     public void setAnswers(String[] answers) {
         this.answers = answers;
     }
-    public void clear(){
+
+    public void clear() {
         question = null;
         answers = new String[4];
     }
-    
+
+    public void sortByName() {
+        this.scoreboard = em.createNamedQuery("Highscore.orderedByName").getResultList();
+    }
+
+    public void sortByDate() {
+        this.scoreboard = em.createNamedQuery("Highscore.orderedByDate").getResultList();
+    }
+
     public void addQuestion() {
         List<Answers> answerList = new LinkedList<>();
         Questions q = new Questions();

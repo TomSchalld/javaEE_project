@@ -33,9 +33,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Highscore.findAll", query = "SELECT h FROM Highscore h"),
     @NamedQuery(name = "Highscore.findById", query = "SELECT h FROM Highscore h WHERE h.id = :id"),
     @NamedQuery(name = "Highscore.findByName", query = "SELECT h FROM Highscore h WHERE h.name = :name"),
+    @NamedQuery(name = "Highscore.orderedByName", query = "SELECT h FROM Highscore h ORDER BY h.name"),
     @NamedQuery(name = "Highscore.findByPoints", query = "SELECT h FROM Highscore h WHERE h.points = :points"),
-    @NamedQuery(name = "Highscore.orderedByPoints", query = "SELECT h FROM Highscore h ORDER BY h.points"),
-    @NamedQuery(name = "Highscore.findByTimestamp", query = "SELECT h FROM Highscore h WHERE h.timestamp = :timestamp")})
+    @NamedQuery(name = "Highscore.orderedByPoints", query = "SELECT h FROM Highscore h ORDER BY h.points DESC"),
+    @NamedQuery(name = "Highscore.findByTimestamp", query = "SELECT h FROM Highscore h WHERE h.timestamp = :timestamp"),
+    @NamedQuery(name = "Highscore.orderedByDate", query = "SELECT h FROM Highscore h ORDER BY h.timestamp DESC")})
 public class Highscore implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -129,5 +131,5 @@ public class Highscore implements Serializable {
     public String toString() {
         return "model.Highscore[ id=" + id + " ]";
     }
-    
+
 }
