@@ -90,7 +90,14 @@ public class GameController {
             return randomQuestions();
         }
         this.persistScore();
+        clear();
         return "highscore";
+    }
+
+    private void clear() {
+        this.answerInGame=null;
+        this.roundCount=0;
+        this.score=0;
     }
     
     private void persistScore() {
