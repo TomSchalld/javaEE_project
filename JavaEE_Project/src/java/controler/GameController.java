@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -99,8 +100,11 @@ public class GameController {
         this.answerInGame=null;
         this.roundCount=0;
         this.score=0;
+        this.logout();
     }
-    
+    public void logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    }
     private void persistScore() {
         Highscore h = new Highscore();
         h.setName(name);
