@@ -45,7 +45,7 @@ public class GameController {
         resultList = em.createNamedQuery("Questions.findAll").getResultList();
         Collections.shuffle(resultList);
         question = resultList.get(0);
-            return "game";
+        return "game";
         
     }
 
@@ -83,11 +83,12 @@ public class GameController {
     
     public String nextRound() {
         this.answerInGame = this.question.getAnswersList().get(this.answerIndex);
-        if (this.roundCount < resultList.size() && this.roundCount < 10) {
+        if (this.roundCount < this.resultList.size() && this.roundCount < 10) {
             this.score += answerInGame.getPoints();
             this.roundCount++;
-            answerInGame=null;
-            return randomQuestions();
+            this.answerInGame=null;
+            this.question = resultList.get(this.roundCount);
+            return "game";
         }
         this.persistScore();
         clear();
