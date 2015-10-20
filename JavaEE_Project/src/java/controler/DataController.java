@@ -29,7 +29,7 @@ import model.Questions;
 public class DataController {
 
     @NotNull(message = "Question must be filled")
-    @Pattern(regexp = "^[a-zA-Z0-9?_ ]*$", message = "Question contains non-alphabetic things")
+    @Pattern(regexp = "^[a-zA-Z0-9?.,_ ]*$", message = "Question contains non-alphabetic things")
     @Size(min = 5, max = 255, message = "Question to short or to long ")
     private String question;
     @Pattern(regexp = "^[a-zA-Z0-9_ ]*$", message = "Answer contains forbidden things")
@@ -80,8 +80,8 @@ public class DataController {
         doAnswers(q, answerList);
         t = em.getTransaction();
         t.begin();
-        em.persist(q);
         try {
+            em.persist(q);
             t.commit();
         } catch (Exception e) {
             t.rollback();
