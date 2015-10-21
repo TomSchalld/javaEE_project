@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 21, 2015 at 12:19 PM
+-- Generation Time: Oct 21, 2015 at 12:44 PM
 -- Server version: 5.5.44-0+deb8u1
 -- PHP Version: 5.6.13-0+deb8u1
 
@@ -19,19 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `game`
 --
+CREATE DATABASE IF NOT EXISTS `game` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `game`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Answers`
 --
+-- Creation: Oct 20, 2015 at 09:38 AM
+--
 
+DROP TABLE IF EXISTS `Answers`;
 CREATE TABLE IF NOT EXISTS `Answers` (
 `ID` int(11) NOT NULL,
   `QuestionID` int(11) NOT NULL,
   `Answer` text NOT NULL,
   `Points` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `Answers`:
+--   `QuestionID`
+--       `Questions` -> `ID`
+--
 
 --
 -- Dumping data for table `Answers`
@@ -64,7 +75,10 @@ INSERT INTO `Answers` (`ID`, `QuestionID`, `Answer`, `Points`) VALUES
 --
 -- Table structure for table `Highscore`
 --
+-- Creation: Oct 17, 2015 at 09:35 AM
+--
 
+DROP TABLE IF EXISTS `Highscore`;
 CREATE TABLE IF NOT EXISTS `Highscore` (
 `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
@@ -95,7 +109,10 @@ INSERT INTO `Highscore` (`ID`, `Name`, `Points`, `Timestamp`) VALUES
 --
 -- Table structure for table `Questions`
 --
+-- Creation: Oct 20, 2015 at 09:38 AM
+--
 
+DROP TABLE IF EXISTS `Questions`;
 CREATE TABLE IF NOT EXISTS `Questions` (
 `ID` int(11) NOT NULL,
   `Question` text NOT NULL
